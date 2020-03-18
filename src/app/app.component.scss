@@ -1,0 +1,16 @@
+div.level0 {
+    width: 100vw;
+    display: flex;
+}
+div.level1 {
+    &.left {
+        flex: 1 1 auto;
+        background-color: aquamarine;
+    }
+    &.middle {
+        flex: 1 1 168px;
+    }
+    &.right {
+        flex: 1 1 340px;
+    }
+}

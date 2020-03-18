@@ -1,0 +1,39 @@
+<div class="container" #container>
+    <svg:svg [attr.width]="cfg.pickerSize.width" [attr.height]="height">
+        <svg:svg [attr.x]="cfg.rangeItemPos.x" [attr.y]="cfg.rangeItemPos.y" [attr.width]="cfg.rangeItemSize.width"
+                 [attr.height]="cfg.rangeItemSize.height">
+            <defs>
+                <pattern id="dotted-pattern" x="1" y="1" width="3" height="3" patternUnits="userSpaceOnUse">
+                    <circle class="dotted" cx="1" cy="1" r="1" />
+                </pattern>
+                <pattern id="red-dotted-pattern" x="1" y="1" width="3" height="3" patternUnits="userSpaceOnUse">
+                    <circle class="red-dotted" cx="1" cy="1" r="1" />
+                </pattern>
+                <filter id="shadow">
+                    <feDropShadow dx="0.5" dy="0.5" stdDeviation="3" />
+                </filter>
+            </defs>
+            <svg:svg aaRangeItem x="0" y="0" [attr.width]="cfg.rangeItemSize.width"
+                     [attr.height]="cfg.rangeItemSize.height" [isArrowDown]="showPanel"
+                     (fromRangeItemShowCalendar)="onShowCalendar($event)">
+            </svg:svg>
+        </svg:svg>
+        <svg:svg class="panel" [attr.x]="cfg.panelPos.x" [attr.y]="cfg.panelPos.y" [attr.width]="cfg.panelSize.width"
+                 [attr.height]="cfg.panelSize.height">
+            <svg:svg aaNavigation [attr.x]="cfg.navigationPos.x" [attr.y]="cfg.navigationPos.y" [attr.width]="cfg.navigationSize.width"
+                     [attr.height]="cfg.navigationSize.height">
+            </svg:svg>
+            <svg:svg aaCalendar class="calendar" [left]="true" [attr.x]="cfg.leftCalendarPos.x"
+                     [attr.y]="cfg.leftCalendarPos.y" [attr.width]="cfg.calendarSize.width"
+                     [attr.height]="cfg.calendarSize.height">
+            </svg:svg>
+            <svg:svg aaCalendar class="calendar" [left]="false" [attr.x]="cfg.rightCalendarPos.x"
+                     [attr.y]="cfg.rightCalendarPos.y" [attr.width]="cfg.calendarSize.width"
+                     [attr.height]="cfg.calendarSize.height">
+            </svg:svg>
+            <svg:svg aaTools [attr.x]="cfg.toolsPos.x" [attr.y]="cfg.toolsPos.y" [attr.width]="cfg.toolsSize.width"
+                     [attr.height]="cfg.toolsSize.height" (fromToolsSubmit)="onSubmit($event)">
+            </svg:svg>
+        </svg:svg>
+    </svg:svg>
+</div>

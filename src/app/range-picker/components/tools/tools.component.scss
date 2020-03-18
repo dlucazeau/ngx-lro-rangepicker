@@ -1,0 +1,24 @@
+.today {
+    cursor: pointer;
+    rect {
+        fill: transparent;
+    }
+    text {
+        fill: var(--color-primary-normal, "#0057ff");
+    }
+}
+
+.action {
+    cursor: pointer;
+    path {
+        fill: var(--color-primary-normal, "#0057ff");
+    }
+    circle {
+        fill: var(--color-primary-light, "#e2eeff");
+    }
+}
+
+rect {
+    fill: transparent;
+    stroke: var(--color-grey-dark, "#617079");
+}

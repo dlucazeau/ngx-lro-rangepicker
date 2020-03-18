@@ -1,0 +1,15 @@
+@import "imports";
+
+@import "~jsoneditor/dist/jsoneditor.min.css";
+
+.jsoneditor-contextmenu .jsoneditor-menu button,
+.jsoneditor-menu > button:disabled,
+.jsoneditor-menu > .jsoneditor-modes > button:disabled,
+.jsoneditor-search button:hover {
+    background: var(--color-white);
+}
+
+.jsoneditor-menu {
+    background-color: var(--color-primary-normal);
+    border-bottom-color: var(--color-primary-normal);
+}

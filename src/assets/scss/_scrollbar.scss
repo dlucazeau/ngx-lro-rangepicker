@@ -1,0 +1,71 @@
+@import 'imports';
+
+// Webkit: Chrome et Edge Canary
+::-webkit-scrollbar {
+    width: 5px;
+    height: 6px;
+} /* this targets the default scrollbar (compulsory) */
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 2ex;
+    border-radius: 2ex;
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            :host-context(.#{$name}) &,
+            .#{$name} & {
+                background-color: getSkinColor($skin, color-primary-light);
+            }
+        }
+    }
+} /* the new scrollbar will have a flat appearance with the set background color */
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 2ex;
+    border-radius: 2ex;
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            :host-context(.#{$name}) &,
+            .#{$name} & {
+                background-color: getSkinColor($skin, color-primary-normal);
+            }
+        }
+    }
+} /* this will style the thumb, ignoring the track */
+
+// ::-webkit-scrollbar-button {
+//      @each $skin, $name in $skins {
+//         @if map-has-key($config, $skin) {
+//             :host-context(.#{$name}) &,
+//             .#{$name} & {
+//                 background-color: getSkinColor($skin, color-primary-light);
+//             }
+//         }
+//     }
+// }
+ /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+::-webkit-scrollbar-corner {
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            :host-context(.#{$name}) &,
+            .#{$name} & {
+                background-color: getSkinColor($skin, color-primary-light);
+            }
+        }
+    }
+}
+
+// Firefox
+.aa-scrollable-y {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.aa-scrollable-x {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.aa-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary-normal) var(--color-primary-light);
+}

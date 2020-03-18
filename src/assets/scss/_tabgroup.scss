@@ -1,0 +1,13 @@
+@import "imports";
+
+.normal-tabgroup {
+    background: linear-gradient(
+        180deg,
+        rgba(237, 237, 237, 1) 0%,
+        rgba(249, 249, 249, 1) 33%,
+        rgba(255, 255, 255, 1) 100%
+    );
+}
+.popin-tabgroup {
+    background: $color-white;
+}

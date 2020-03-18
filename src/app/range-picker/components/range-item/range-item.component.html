@@ -1,0 +1,12 @@
+<svg:svg x="0" y="0" (click)="onClickArrow()">
+    <svg:rect x="0" y="0"[attr.width]="cfg.rangeItemSize.width"
+                     [attr.height]="cfg.rangeItemSize.height" stroke-width="1" height="24" />
+    <svg:text x="7" y="18">
+        {{ displayRange }}
+    </svg:text>
+    <svg:svg [attr.height]="cfg.cellHeight" [attr.width]="cfg.cellWidth" [attr.x]="cfg.navigationSize.width - cfg.cellWidth"
+             [attr.y]="cfg.rangeItemPos.y" viewBox="0 0 24 24" class="arrow">
+        <svg:path d="M6,7 H18 L12,17 Z" *ngIf="!open" />
+        <svg:path d="M6,17 H18 L12,7 Z" *ngIf="open" />
+    </svg:svg>
+</svg:svg>

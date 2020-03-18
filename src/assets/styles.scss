@@ -1,0 +1,507 @@
+@import "imports";
+
+// @import "~@angular/cdk/overlay-prebuilt.css";
+
+// @import "roboto";
+
+/********* Variables accédées par JS *********/
+:root {
+    --popup-item-height: 32;
+    --user-menu-width: 17;
+}
+/*********************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, sans-serif !important;
+}
+
+i {
+    font-family: $fontAwesomeFamily !important;
+}
+
+body {
+    @include aa-medium-current-text;
+    margin: 0 !important;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                color: getSkinColor($skin, color-black);
+                background-color: getSkinColor($skin, color-white);
+            }
+        }
+    }
+}
+
+a,
+.url-text {
+    text-decoration: none;
+    @each $skin, $name in $skins {
+        .#{$name} & {
+            color: getSkinColor($skin, color-grey-dark);
+        }
+    }
+}
+a.alert {
+    color: var(--color-msg-warning2-normal) !important;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    // border-top-color: currentcolor;
+    // border-top-style: none;
+    // border-top-width: 0px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Structure de la page complète */
+#page-wrapper {
+    @include aa-grid-template(
+        "#{$header-height} 1fr",
+        "#{$left-navbar-width} 1fr"
+    );
+    height: 100vh;
+    width: 100vw;
+
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                background-color: getSkinColor($skin, color-grey-snow);
+            }
+        }
+    }
+}
+
+#header {
+    background-color: $color-grey-snow;
+    @include aa-grid-row(1);
+    @include aa-grid-col(1, 2);
+
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                border-bottom: 1px
+                    solid
+                    rgba(getSkinColor($skin, color-border-normal), 0.8);
+            }
+        }
+    }
+}
+
+#left-navbar {
+    @include aa-grid-row-col(2, 1);
+
+    z-index: 50;
+
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                background-color: rgba(
+                    getSkinColor($skin, color-grey-medium),
+                    0.5
+                );
+                border-right: 1px
+                    solid
+                    rgba(getSkinColor($skin, color-border-normal), 0.8);
+            }
+        }
+    }
+    @include contour04-right;
+}
+
+#content-wrapper {
+    @include aa-grid-row-col(2, 2);
+    position: relative;
+}
+
+#header,
+#left-navbar {
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                background-color: getSkinColor($skin, color-white);
+            }
+        }
+    }
+}
+/* Fin de la structure de la page complète */
+
+/* Structure du contenu par application */
+.content-full {
+    @include aa-grid-template("1fr", "1fr");
+
+    width: calc(100vw - #{$left-navbar-width});
+
+    & > div {
+        @each $skin, $name in $skins {
+            @if map-has-key($config, $skin) {
+                .#{$name} & {
+                    background-color: getSkinColor($skin, color-grey-snow);
+                }
+            }
+        }
+    }
+}
+
+.expand {
+    #page-wrapper {
+        @include aa-grid-template("0 1fr", "0 1fr 0");
+    }
+    #header,
+    #left-navbar,
+    #right-navbar {
+        visibility: hidden;
+    }
+    .content-full {
+        width: 100vw;
+    }
+}
+
+.content-panels {
+    @include aa-grid-row-col(1, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.content-panel {
+    padding-right: $right-margin-width;
+    width: calc(100vw - #{$left-navbar-width});
+}
+
+.content-header {
+    height: $content-header-height;
+    padding-left: $content-panel-padding-left;
+    width: 100%;
+    padding-top: $content-header-padding-height;
+    padding-bottom: $content-header-padding-height;
+    @include aa-h2-title;
+}
+
+.content-actions {
+    padding-left: 0;
+    width: 100%;
+}
+
+.content-data {
+    padding-left: $content-panel-padding-left;
+    position: relative;
+    width: 100%;
+    // .scrollable & {
+    //     width: calc(100vw - #{$left-navbar-width} - #{$right-margin-width});
+    // }
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                background-color: rgba(
+                    getSkinColor($skin, color-grey-snow),
+                    0.5
+                );
+            }
+        }
+    }
+}
+
+.clickable {
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
+}
+
+.overflow-ellipsis {
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: visible;
+    text-overflow: ellipsis;
+}
+
+.bandeau-header {
+    width: 100%;
+    // padding: 7px 0;
+}
+
+.expand .bandeau-header {
+    width: 100vw;
+    padding: 0 50px;
+}
+
+.bandeau-actions {
+    width: 100%;
+    min-height: $row-detail-min-height;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.loading {
+    z-index: $loading-zindex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    .loadingContainer {
+        @include aa-grid-row(1);
+        @include aa-grid-col(1);
+        display: flex;
+        .loadingItem {
+            margin: auto;
+            text-align: center;
+            @include aa-h1-title;
+            @each $skin, $name in $skins {
+                @if map-has-key($config, $skin) {
+                    .#{$name} & {
+                        color: rgba(
+                            getSkinColor($skin, color-msg-primary-normal),
+                            0.5
+                        );
+                    }
+                }
+            }
+        }
+    }
+}
+.masking {
+    z-index: $masking-zindex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    opacity: 0;
+}
+
+.expand-collapse {
+    position: absolute;
+    right: 11px;
+    top: calc(#{$header-height} + 11px);
+    .expand & {
+        top: 3px;
+    }
+    @include top-action-circle(".fa-circle");
+    &.mini {
+        right: 35px;
+    }
+}
+
+.row-details {
+    height: $row-detail-min-height;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    @include border-row-details;
+    &:hover {
+        @include aa-shadow01;
+        z-index: 1;
+        position: relative;
+    }
+    @each $skin, $name in $skins {
+        .#{$name} & {
+            background-color: getSkinColor($skin, color-white);
+        }
+    }
+    .expand & {
+        width: 100vw;
+    }
+    .virtual-scrollable-viewport & {
+        width: calc(100vw - (#{$left-navbar-width} + #{$right-margin-width}));
+        .expand & {
+            width: 100vw;
+        }
+    }
+}
+
+// AUTH
+#auth-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: flex-start;
+}
+
+.auth-title {
+    @include aa-h1-title;
+}
+
+.auth-sub-title {
+    @include aa-light-current-text;
+}
+// AUTH END
+
+// Modal et popin en CDK
+.guard-modal-backdrop {
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                background-color: rgba(
+                    getSkinColor($skin, color-grey-light),
+                    0.25
+                );
+            }
+        }
+    }
+}
+.popin-modal-backdrop,
+.popup-menu-backdrop {
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                background-color: transparent;
+            }
+        }
+    }
+}
+.cdk-overlay-pane {
+    // @include aa-shadow01;
+    //     border: 1px solid red;
+    //     background-color: bisque;
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                background-color: transparent; // getSkinColor($skin, color-white);
+            }
+        }
+    }
+}
+// End Modal et popin en CDK
+
+.aa-ck-editor-80 .ck.ck-editor__editable_inline {
+    height: 80% !important;
+}
+
+// BEGIN - Nouveau découpage de page
+/* Structure de la page complète */
+#page-wrapper9 {
+    @include aa-grid-template(
+        "#{$header-height} 1fr",
+        "#{$left-navbar-width} 1fr"
+    );
+    grid-template-areas:
+        "header9 header9"
+        "left-navbar9 content-wrapper9";
+    height: 100vh;
+    width: 100vw;
+    // background-color: var(--color-grey-snow);
+}
+#header9 {
+    grid-area: header9;
+    @include aa-grid-row(1);
+    @include aa-grid-col(1, 2);
+    background-color: var(--color-grey-snow);
+    border-bottom: 1px solid rgba(var(--color-border-normal-rgb), 0.8);
+}
+#left-navbar9 {
+    grid-area: left-navbar9;
+    @include aa-grid-row-col(2, 1);
+    z-index: $left-navbar-zindex;
+    // background-color: rgba(var(--color-grey-medium-rgb), 0.5);
+    border-right: 1px solid rgba(var(--color-border-normal-rgb), 0.8);
+    @include contour04-right;
+}
+#header9,
+#left-navbar9 {
+    background-color: var(--color-white);
+}
+#content-wrapper9 {
+    grid-area: content-wrapper9;
+    @include aa-grid-row-col(2, 2);
+    // Nécessaire pour les ombrages de ligne row-details
+    position: relative;
+    @include aa-grid-template(
+        "1fr #{$footer-height}",
+        "1fr #{$right-margin-width}"
+    );
+    grid-template-areas: "content-full-left9 content-full-right9" "content-footer-left9 content-footer-right9";
+    height: calc(100vh - #{$header-height});
+    width: calc(100vw - #{$left-navbar-width});
+    background-color: var(--color-grey-snow);
+}
+#content-full-left9 {
+    grid-area: content-full-left9;
+    @include aa-grid-row-col(1, 1);
+    height: calc(100vh - #{$header-height} - #{$footer-height});
+    width: calc(100vw - #{$left-navbar-width} - #{$right-margin-width});
+}
+#content-full-right9 {
+    grid-area: content-full-right9;
+    @include aa-grid-row-col(1, 2);
+    height: calc(100vh - #{$header-height} - #{$footer-height});
+}
+#content-footer-left9 {
+    grid-area: content-footer-left9;
+    @include aa-grid-row-col(2, 1);
+    width: calc(100vw - #{$left-navbar-width} - #{$right-margin-width});
+    padding-left: $content-panel-padding-left;
+}
+#content-footer-right9 {
+    grid-area: content-footer-right9;
+    @include aa-grid-row-col(2, 2);
+}
+
+/* Fin de la structure de la page complète */
+/* Structure du contenu par application */
+.content-panel9 {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.content-panel9.with-tabs9 {
+    .aa-tabgroup {
+        flex: 0 0 #{$tabs-header-height};
+    }
+    .aa-tab-content {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.content-data-zone9 {
+    flex: 1 1 auto;
+    padding-left: $content-panel-padding-left;
+    &.no-padding-left {
+        padding-left: 0;
+    }
+    @include aa-grid-template("#{$content-header-height} 1fr", "1fr");
+    grid-template-areas: "content-header9" "content-data9";
+    &.with-actions9 {
+        @include aa-grid-template(
+            "#{$content-header-height} #{$content-actions-height} 1fr",
+            "1fr"
+        );
+        grid-template-areas: "content-header9" "content-actions9" "content-data9";
+    }
+    .content-header9 {
+        grid-area: content-header9;
+    }
+    .content-actions9 {
+        grid-area: content-actions9;
+    }
+    .content-data9 {
+        grid-area: content-data9;
+    }
+}
+// END - Nouveau découpage de page
+
+@import "ribbon";
+@import "forms";
+@import "scrollbar";
+@import "badges";
+@import "tabgroup";
+@import "uploads";
+@import "animations";
+@import "select";
+@import "cards";
+// @import "jeditor";

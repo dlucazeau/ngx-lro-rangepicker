@@ -1,0 +1,139 @@
+@import './colors';
+
+@function getSkinColor($skin, $key) {
+    @if map-has-key($config, $skin) {
+        @return map-get(map-get($config, $skin), $key);
+    }
+}
+
+@function getSkinBtnColor($skin, $level, $state) {
+    @if map-has-key($config, $skin) {
+        @return map-get(
+            map-get(map-get(map-get($config, $skin), color-btn), $level),
+            $state
+        );
+    }
+}
+
+@function getSkinColorByKey($key) {
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            @return map-get(map-get($config, $skin), $key);
+        }
+    }
+}
+
+@function getPanelTopPercent($appli, $feature, $position) {
+    @return map-get(map-get(map-get($panels, $appli), $feature), $position);
+}
+
+// @function _abs($number) {
+//     @if $number >= 0 {
+//         @return $number;
+//     }
+
+//     @return -1 * $number;
+// }
+
+// square root function using the Babylonian method
+// http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method
+@function _sqrt($square, $tolerance: 0.001, $estimate: $square/2) {
+    @if abs($square - $estimate * $estimate) < $tolerance {
+        @return $estimate;
+    }
+
+    @return _sqrt($square, $tolerance, ($estimate + $square/$estimate)/2);
+}
+
+@function _circonscrit($n, $adjust) {
+    $x: (2 * $n * $n);
+
+    @return $adjust * _sqrt($x);
+}
+/********************************************/
+/* Calcul des hauteurs dans content-wrapper */
+/********************************************/
+@function calcVirtualScrollableViewportHeight( $withTabset: false, $withContentHeader: true, $withActions: true) {
+    $height: calc(99vh - (#{$header-height} + #{$footer-height}));
+
+    @if ($withTabset) {
+        $height: calc(#{$height} - #{$tabs-header-height});
+    }
+
+    @if ($withContentHeader) {
+        $height: calc(#{$height} - #{$content-header-height});
+    }
+
+    @if ($withActions) {
+        $height: calc(#{$height} - #{$content-actions-height});
+    }
+
+    @return $height;
+}
+
+@function calcContentPanelHeight($withTabset: false, $percent: 1) {
+    @if ($withTabset) {
+        @return calc(
+            #{$percent} * calc(99vh - #{$header-height} - #{$tabs-header-height})
+        );
+    } @else {
+        @return calc(#{$percent} * calc(99vh - #{$header-height}));
+    }
+}
+
+@function calcContentDataHeight(
+    $panelHeight,
+    $withHeader: true,
+    $withAction: true,
+    $withFooter: false
+) {
+    $height: $panelHeight;
+
+    @if ($withHeader) {
+        $height: calc(#{$height} - #{$content-header-height});
+    }
+
+    @if ($withAction) {
+        $height: calc(#{$height} - #{$content-actions-height});
+    }
+
+    @if ($withFooter) {
+        $height: calc(#{$height} - #{$content-footer-height});
+    }
+
+    @return $height;
+}
+@function calcContentFullGridRow($withTabset: false) {
+    // $grid-row: "";
+
+    // // @if ($withTabset) {
+    // //     $grid-row: $grid-row + "#{$tabs-header-height}";
+    // // } @else {
+    // //     $grid-row: $grid-row + "#{$no-tabs-header-height}";
+    // // }
+
+    // @return $grid-row + " " + "1fr";
+
+    @return '1fr';
+}
+
+@function calcContentPanelGridRow($withHeader: true, $withAction: true, $withFooter: false) {
+    $grid-row: '';
+
+    @if ($withHeader) {
+        $grid-row: $grid-row + ' ' + ' #{$content-header-height}';
+    }
+
+    @if ($withAction) {
+        $grid-row: $grid-row + ' ' + '#{$content-actions-height}';
+    }
+
+    $grid-row: $grid-row + ' ' + '1fr';
+
+    @if ($withFooter) {
+        $grid-row: $grid-row + ' ' + '#{$content-footer-height}';
+    }
+
+    @return $grid-row;
+}
+/********************************************/

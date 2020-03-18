@@ -1,0 +1,23 @@
+<svg:svg
+    class="day"
+    *ngFor="let wd of weekDays; let idx = index"
+    [attr.x]="24 * idx"
+    y="0"
+    [attr.width]="24"
+    height="24"
+>
+    <svg:rect
+        [style.stroke]="'grey'"
+        [style.stroke-width]="'1px'"
+        y="0"
+        x="0"
+        [attr.width]="24"
+        height="24"
+        [ngStyle]="{
+            fill: idx > 4 ? 'url(#dotted-pattern)' : 'transparent'
+        }"
+    ></svg:rect>
+    <svg:text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
+        {{ wd }}
+    </svg:text>
+</svg:svg>

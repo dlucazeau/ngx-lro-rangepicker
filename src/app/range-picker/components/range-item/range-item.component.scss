@@ -1,0 +1,11 @@
+.arrow {
+    cursor: pointer;
+    path {
+        fill: var(--color-primary-normal, "#0057ff");
+    }
+}
+
+rect {
+    fill: transparent;
+    stroke: var(--color-grey-dark, "#617079");
+}

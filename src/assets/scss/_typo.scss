@@ -1,0 +1,290 @@
+$fontAwesomeFamily: 'Font Awesome 5 Pro';
+// $fontStar: normal normal normal 7px/1 $fontAwesomeFamily;
+// $fontSort: normal normal normal 14px/1 $fontAwesomeFamily;
+
+$font-size-base: 0.875rem; // 14px
+$regular-font-weight: 100;
+$light-font-weight: 300;
+$medium-font-weight: 500;
+$bold-font-weight: 900;
+
+@mixin aa-h1-title {
+    font-weight: $bold-font-weight;
+    font-size: calc(#{$font-size-base} * 25 / 14);
+    line-height: 34px;
+}
+
+@mixin aa-50-title {
+    font-weight: $bold-font-weight;
+    font-size: calc(#{$font-size-base} * 50 / 14);
+    line-height: 75px;
+}
+
+@mixin aa-40-light-title {
+    font-weight: $light-font-weight;
+    font-size: calc(#{$font-size-base} * 40 / 14);
+    line-height: 50px;
+}
+
+@mixin aa-h2-title {
+    font-weight: $medium-font-weight;
+    font-size: calc(#{$font-size-base} * 22 / 14);
+    line-height: 34px;
+}
+
+@mixin aa-h4-title {
+    font-weight: $medium-font-weight;
+    font-size: calc(#{$font-size-base} * 17 / 14);
+    line-height: 26px;
+}
+
+@mixin aa-h4-title-search {
+    font-weight: $light-font-weight;
+    font-size: calc(#{$font-size-base} * 17 / 14);
+    line-height: 26px;
+}
+
+@mixin aa-error-message {
+    font-weight: $medium-font-weight;
+    font-size: calc(#{$font-size-base} * 12 / 14);
+    line-height: 14px;
+}
+
+h1,
+.h1 {
+    @include aa-h1-title;
+}
+
+h4,
+.h4 {
+    @include aa-h4-title;
+}
+
+@mixin aa-light-current-text {
+    font-weight: $light-font-weight;
+    font-size: $font-size-base;
+    line-height: 22px;
+    // color: rgba(97,112,121,1);
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            :host-context(.#{$name}) &,
+            .#{$name} & {
+                color: getSkinColor($skin, color-grey-dark);
+            }
+        }
+    }
+}
+
+@mixin aa-light2-current-text {
+    font-weight: $light-font-weight;
+    font-size: $font-size-base;
+    line-height: 22px;
+    // color: rgba(97,112,121,1);
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                color: getSkinColor($skin, color-grey-light);
+            }
+        }
+    }
+}
+
+@mixin aa-regular-current-text {
+    font-weight: $regular-font-weight;
+    font-size: $font-size-base;
+    line-height: 22px;
+}
+
+@mixin aa-medium-current-text {
+    font-weight: $medium-font-weight;
+    font-size: $font-size-base;
+    line-height: 22px;
+}
+
+@mixin aa-bold-current-text {
+    font-weight: $bold-font-weight;
+    font-size: $font-size-base;
+    line-height: 22px;
+}
+
+@mixin aa-light-label {
+    font-weight: $light-font-weight;
+    font-size: calc(#{$font-size-base} * 10 / 14);
+    line-height: 11px;
+}
+
+@mixin aa-bold-label {
+    font-weight: $bold-font-weight;
+    font-size: calc(#{$font-size-base} * 10 / 14);
+    line-height: 11px;
+}
+
+@mixin aa-italic-light-label {
+    @include aa-light-label;
+    font-style: italic;
+}
+
+@mixin aa-legend-like {
+    font-weight: $medium-font-weight;
+    font-size: calc(#{$font-size-base} * 20 / 14);
+    line-height: 28px;
+}
+
+// @mixin aa-btn-text-light {
+//     font-weight: $light-font-weight;
+//     font-size: calc(#{$font-size-base} * 16 / 14);
+//     line-height: 24px;
+// }
+
+// @mixin aa-btn-text-bold {
+//     font-weight: $bold-font-weight;
+//     font-size: calc(#{$font-size-base} * 16 / 14);
+//     line-height: 24px;
+// }
+
+@mixin aa-navigation-n2 {
+    font-weight: $bold-font-weight;
+    font-size: calc(#{$font-size-base} * 13 / 14);
+    line-height: 22px;
+}
+
+@mixin aa-navigation-n1 {
+    font-weight: $medium-font-weight;
+    font-size: calc(#{$font-size-base} * 12 / 14);
+    line-height: 22px;
+}
+
+@mixin aa-navigation-left-bar {
+    font-weight: $medium-font-weight;
+    font-size: calc(#{$font-size-base} * 12 / 14);
+    line-height: 14px;
+}
+
+@mixin aa-light-13 {
+    font-weight: $light-font-weight;
+    font-size: calc(#{$font-size-base} * 13 / 14);
+    line-height: 22px;
+}
+
+@mixin aa-medium-13 {
+    font-weight: $medium-font-weight;
+    font-size: calc(#{$font-size-base} * 13 / 14);
+    line-height: 22px;
+}
+
+@mixin aa-medium-12 {
+    font-weight: $medium-font-weight;
+    font-size: calc(#{$font-size-base} * 12 / 14);
+    line-height: 22px;
+}
+
+@mixin aa-light-54 {
+    font-weight: $bold-font-weight;
+    font-size: calc(#{$font-size-base} * 54 / 14);
+    line-height: 83px;
+}
+
+@mixin aa-light-28-35 {
+    font-weight: $light-font-weight;
+    font-size: calc(#{$font-size-base} * 28 / 14);
+    line-height: 35px;
+}
+
+// Styles de texte
+.aa-light-current-text {
+    @include aa-light-current-text;
+}
+.aa-light2-current-text {
+    @include aa-light2-current-text;
+}
+.aa-medium-current-text {
+    @include aa-medium-current-text;
+}
+.aa-bold-current-text {
+    @include aa-bold-current-text;
+}
+.aa-light-13-text {
+    @include aa-light-13;
+}
+// Fin des styles de texte
+
+.small-text {
+    @include aa-light-label;
+    // @each $skin, $name in $skins {
+    //     @if map-has-key($config, $skin) {
+    //         .#{$name} & {
+    //             color: getSkinColor($skin, color-black);
+    //         }
+    //     }
+    // }
+}
+
+.small-text-link {
+    @include aa-light-label;
+    cursor: pointer;
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                color: getSkinColor($skin, color-primary-normal);
+            }
+        }
+    }
+}
+
+.small-text-danger {
+    @include aa-light-label;
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                color: getSkinColor($skin, color-msg-danger-normal);
+            }
+        }
+    }
+}
+
+.medium-text {
+    @include aa-light-13;
+    // @each $skin, $name in $skins {
+    //     @if map-has-key($config, $skin) {
+    //         .#{$name} & {
+    //             color: getSkinColor($skin, color-black);
+    //         }
+    //     }
+    // }
+}
+
+.medium-text-link {
+    @include aa-medium-current-text;
+    cursor: pointer;
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                color: getSkinColor($skin, color-primary-normal);
+            }
+        }
+    }
+}
+
+.regular-text-link {
+    @include aa-regular-current-text;
+    cursor: pointer;
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                color: getSkinColor($skin, color-primary-normal);
+            }
+        }
+    }
+}
+
+.bold-text-link {
+    @include aa-bold-current-text;
+    cursor: pointer;
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                color: getSkinColor($skin, color-primary-normal);
+            }
+        }
+    }
+}

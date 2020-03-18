@@ -1,0 +1,45 @@
+.dropzone {
+    height: 20vh;
+    min-height: 150px;
+    border: 0 !important;
+    border-radius: 4px;
+    padding: 2px !important;
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            :host-context(.#{$name}) & {
+                background-color: getSkinColor(
+                    $skin,
+                    color-msg-danger-normal
+                ) !important;
+            }
+        }
+    }
+    @include shadow03;
+    .dz-wrapper {
+        height: 3em !important;
+        // &:hover {
+        //     height: 90% !important;
+        //     & .dz-preview {
+        //         visibility: hidden;
+        //     }
+        // }
+    }
+    .dz-message {
+        display: flex !important;
+        align-items: center !important;
+        border: 1px dashed $color-black !important;
+        border: 1px dashed $color-black !important;
+        margin: 1em !important;
+        height: 100% !important;
+        cursor: pointer !important;
+        .dz-text {
+            flex: 1 1 auto !important;
+            justify-content: center !important;
+            @include aa-light-current-text;
+        }
+    }
+    img {
+        width: 120px;
+        height: auto;
+    }
+}

@@ -1,0 +1,58 @@
+@import "imports";
+
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} &.badge-secondary {
+                color: getSkinColor($skin, color-msg-primary-normal);
+                background-color: getSkinColor($skin, color-msg-primary-light);
+            }
+        }
+    }
+
+    &:empty {
+        display: none;
+    }
+}
+
+.highlighting {
+    font-size: 10px;
+    line-height: 11px;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 0.9px;
+    height: 19px;
+    width: 60px;
+    border-radius: 2px;
+    padding: 4px 2px 0 2px;
+    text-transform: uppercase;
+    &.danger {
+        color: var(--color-msg-danger-normal);
+        background-color: var(--color-msg-danger-light);
+        border-color: var(--color-msg-danger-normal-rgb, 0.17);
+    }
+    &.warning2 {
+        color: var(--color-msg-warning2-normal);
+        background-color: var(--color-msg-warning2-light);
+        border-color: var(--color-msg-warning2-normal-rgb, 0.17);
+    }
+    &.notif {
+        color: var(--color-msg-notif-normal);
+        background-color: var(--color-msg-notif-light);
+        border-color: var(--color-msg-notif-normal-rgb, 0.17);
+    }
+    &.success {
+        color: var(--color-msg-success-normal);
+        background-color: var(--color-msg-success-light);
+        border-color: var(--color-msg-success-normal-rgb, 0.17);
+    }
+}

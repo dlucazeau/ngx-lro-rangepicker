@@ -1,0 +1,22 @@
+<svg:rect [style.fill]="'transparent'" [style.stroke]="'grey'" [style.stroke-width]="'1px'" y="0" x="0"
+          [attr.width]="cfg.navigationSize.width" [attr.height]="cfg.navigationSize.height">
+</svg:rect>
+<svg:svg x="0" y="0" [attr.width]="cfg.cellWidth" [attr.height]="cfg.cellHeight" (click)="onPrevYear()">
+    <svg:path d="M18,6 V18 L6,12 Z" transform="translate(-3)" />
+    <svg:path d="M18,6 V18 L6,12 Z" transform="translate(3)" />
+</svg:svg>²
+<svg:svg x="24" y="0" [attr.width]="cfg.cellWidth" [attr.height]="cfg.cellHeight" (click)="onPrevMonth()">
+    <svg:path d="M18,6 V18 L6,12 Z" />
+</svg:svg>
+<svg:svg [attr.x]="cfg.navigationSize.width - (2 * cfg.cellWidth)" y="0" [attr.width]="cfg.cellWidth"
+         [attr.height]="cfg.cellHeight" (click)="onNextMonth()">
+    <svg:path d="M6,6 V18 L18,12 Z" />
+</svg:svg>
+<svg:svg [attr.x]="cfg.navigationSize.width - cfg.cellWidth" y="0" [attr.width]="cfg.cellWidth" [attr.height]="cfg.cellHeight"
+         (click)="onNextYear()">
+    <svg:path d="M6,6 V18 L18,12 Z" transform="translate(-3)" />
+    <svg:path d="M6,6 V18 L18,12 Z" transform="translate(3)" />
+</svg:svg>
+<svg:text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
+    {{ displayRange }}
+</svg:text>

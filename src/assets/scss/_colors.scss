@@ -1,0 +1,405 @@
+//-----------------------------------------------------------------------
+// <copyright file="_colors.scss" company="Antemeta">
+//     Copyright (c) Antemeta. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+:root {
+    // Primary color
+    --color-primary-normal: #0057ff;
+    --color-primary-bkgd: #387dff;
+    --color-primary-light: #e2eeff;
+    --color-secondary-normal: #ffb906;
+    --color-secondary-light: #fff1cd;
+    --color-black: #1d2b37;
+    --color-white: #ffffff;
+    --color-white-rgb: 255, 255, 255;
+    // Greyscale
+    --color-grey-dark: #617079;
+    --color-grey-light: #8c9faa;
+    --color-grey-medium: #ededed;
+    --color-grey-medium-rgb: 237, 237, 237;
+    --color-grey-snow: #f9f9f9;
+    --color-grey-snow-rgb: 249, 249, 249;
+    // Messaging
+    --color-msg-success-normal: #51D46E;
+    --color-msg-success-normal-rgb: 23, 198, 63;
+    --color-msg-success-light: #d1f4d9;
+    --color-msg-danger-normal: #fe2020;
+    --color-msg-danger-normal-rgb: 254, 32, 32;
+    --color-msg-danger-light: #ffd2d2;
+    --color-msg-warning1-normal: #ffd006;
+    --color-msg-warning1-light: #fff1cd;
+    --color-msg-warning2-normal: #faa60d;
+    --color-msg-warning2-normal-rgb: 250, 166, 13;
+    --color-msg-warning2-light: #feedcf;
+    --color-msg-notif-normal: #9c4aad;
+    --color-msg-notif-normal-rgb: 156, 74, 173;
+    --color-msg-notif-light: #ebdbef;
+    --color-msg-grey-normal: #617079;
+    --color-msg-grey-light: #dfe2e4;
+    --color-msg-primary-normal: #0057ff;
+    --color-msg-primary-light: #e5eeff;
+    --color-border-normal: #e1e1e1;
+    --color-border-normal-rgb: 225, 225, 225;
+    --color-border-hover: #e7e7e7;
+}
+// Primary color
+$color-primary-normal: #0057ff;
+$color-primary-light: #e2eeff;
+$color-secondary-normal: #ffb906;
+$color-secondary-light: #fff1cd;
+$color-black: #1d2b37;
+$color-white: white;
+
+// Greyscale
+$color-grey-dark: #617079;
+$color-grey-light: #8c9faa;
+$color-grey-medium: #ededed;
+$color-grey-snow: #f9f9f9;
+
+// Messaging
+$color-msg-success-normal: #17c63f;
+$color-msg-success-light: #d1f4d9;
+$color-msg-danger-normal: #fe2020;
+$color-msg-danger-light: #ffd2d2;
+$color-msg-warning1-normal: #ffd006;
+$color-msg-warning1-light: #fff1cd;
+$color-msg-warning2-normal: #faa60d;
+$color-msg-warning2-light: #feedcf;
+$color-msg-notif-normal: #9c4aad;
+$color-msg-notif-light: #ebdbef;
+$color-msg-grey-normal: #617079;
+$color-msg-grey-light: #dfe2e4;
+$color-msg-primary-normal: #0057ff;
+$color-msg-primary-light: #e5eeff;
+
+$color-border-normal: #e1e1e1;
+$color-border-hover: #e7e7e7;
+
+$skins: (
+    light: theme-light,
+    dark: theme-dark,
+    marked: theme-marked,
+);
+
+$config: (
+    light: (
+        color-login-background: rgba(#0057ff, 0.78),
+        color-primary-normal: #0057ff,
+        color-primary-light: #e2eeff,
+        color-primary-bkgd: #387DFF,
+        color-secondary-normal: #ffb906,
+        color-secondary-light: #fff1cd,
+        color-black: #1d2b37,
+        color-white: #ffffff,
+        main-bgcolor: #ffffff,
+        color-grey-dark: #617079,
+        color-grey-light: #8c9faa,
+        color-grey-medium: #ededed,
+        color-grey-snow: #f9f9f9,
+        color-msg-success-normal: #17c63f,
+        color-msg-success-light: #d1f4d9,
+        color-msg-danger-normal: #fe2020,
+        color-msg-danger-light: #ffd2d2,
+        color-msg-warning1-normal: #ffd006,
+        color-msg-warning1-light: #fff1cd,
+        color-msg-warning2-normal: #faa60d,
+        color-msg-warning2-light: #feedcf,
+        color-msg-notif-normal: #9c4aad,
+        color-msg-notif-light: #ebdbef,
+        color-msg-grey-normal: #617079,
+        color-msg-grey-light: #dfe2e4,
+        color-msg-primary-normal: #0057ff,
+        color-msg-primary-light: #e5eeff,
+        color-border-normal: #e1e1e1,
+        color-btn-primary-normal: #ffb906,
+        color-btn-primary-hover: #ffc737,
+        color-btn-primary-pressed: #ebaa05,
+        color-btn-primary-disabled: #eaeaea,
+        color-btn-secondary-normal: #ffb906,
+        color-btn-secondary-hover: #ffc737,
+        color-btn-secondary-pressed: #ebaa05,
+        color-btn-secondary-disabled: #eaeaea,
+        color-btn-tertiary-normal: #e1e1e1,
+        color-btn-tertiary-hover: #e7e7e7,
+        color-btn-tertiary-pressed: #e7e7e7,
+        color-btn-tertiary-disabled: #eaeaea,
+        color-snackbar-background: #323232,
+        color-btn: (
+            primary: (
+                normal: #ffb906,
+                hover: #ffc737,
+                pressed: #ebaa05,
+                disabled: #eaeaea,
+            ),
+            secondary: (
+                normal: #ffb906,
+                hover: #ffc737,
+                pressed: #ebaa05,
+                disabled: #eaeaea,
+            ),
+            tertiary: (
+                normal: #e1e1e1,
+                hover: #e7e7e7,
+                pressed: #bfbfbf,
+                disabled: #eaeaea,
+            ),
+            transparent: (
+                normal: transparent,
+                hover: transparent,
+                pressed: transparent,
+                disabled: transparent,
+            ),
+        ),
+    ),
+    dark: (
+        color-login-background: rgba(#0057ff, 0.78),
+        color-primary-normal: #0057ff,
+        color-primary-light: #e2eeff,
+        color-secondary-normal: #ffffff,
+        color-secondary-light: #fff1cd,
+        color-black: #1d2b37,
+        color-white: #ffffff,
+        main-bgcolor: #ffffff,
+        color-grey-dark: #617079,
+        color-grey-light: #8c9faa,
+        color-grey-medium: yellow,
+        color-grey-snow: #f9f9f9,
+        color-msg-success-normal: #17c63f,
+        color-msg-success-light: #d1f4d9,
+        color-msg-danger-normal: darken(yellow, 50%),
+        color-msg-danger-light: lighten(yellow, 20%),
+        color-msg-warning1-normal: #ffd006,
+        color-msg-warning1-light: #fff1cd,
+        color-msg-warning2-normal: #faa60d,
+        color-msg-warning2-light: #feedcf,
+        color-msg-notif-normal: #9c4aad,
+        color-msg-notif-light: #ebdbef,
+        color-msg-grey-normal: #617079,
+        color-msg-grey-light: #dfe2e4,
+        color-msg-primary-normal: #800080,
+        color-msg-primary-light: #e0c0e0,
+        color-border-normal: #e1e1e1,
+        color-btn-primary-normal: purple,
+        color-btn-primary-hover: #3378ff,
+        color-btn-primary-pressed: #0050eb,
+        color-btn-primary-disabled: #eaeaea,
+        color-btn-secondary-normal: #ffffff,
+        color-btn-secondary-hover: #ffc737,
+        color-btn-secondary-pressed: #ebaa05,
+        color-btn-secondary-disabled: #eaeaea,
+        color-btn-tertiary-normal: #e1e1e1,
+        color-btn-tertiary-hover: #e7e7e7,
+        color-btn-tertiary-pressed: #e7e7e7,
+        color-btn-tertiary-disabled: #eaeaea,
+        color-snackbar-background: #323232,
+        color-btn: (
+            primary: (
+                normal: purple,
+                hover: #3378ff,
+                pressed: #0050eb,
+                disabled: #eaeaea,
+            ),
+            secondary: (
+                normal: #ffb906,
+                hover: #ffc737,
+                pressed: #ebaa05,
+                disabled: #eaeaea,
+            ),
+            tertiary: (
+                normal: #e1e1e1,
+                hover: #e7e7e7,
+                pressed: #bfbfbf,
+                disabled: #eaeaea,
+            ),
+            transparent: (
+                normal: #ffffff,
+                hover: #ffffff,
+                pressed: #e7e7e7,
+                disabled: #eaeaea,
+            ),
+        ),
+    ),
+    marked: (
+        color-login-background: rgba(#0057ff, 0.78),
+        color-primary-normal: #0057ff,
+        color-primary-light: #e2eeff,
+        color-secondary-normal: #ffb906,
+        color-secondary-light: #fff1cd,
+        color-black: #1d2b37,
+        color-white: white,
+        color-grey-dark: #617079,
+        color-grey-light: #8c9faa,
+        color-grey-medium: #ededed,
+        color-grey-snow: #f9f9f9,
+        color-msg-success-normal: #17c63f,
+        color-msg-success-light: #d1f4d9,
+        color-msg-danger-normal: #fe2020,
+        color-msg-danger-light: #ffd2d2,
+        color-msg-warning1-normal: #ffd006,
+        color-msg-warning1-light: #fff1cd,
+        color-msg-warning2-normal: #faa60d,
+        color-msg-warning2-light: #feedcf,
+        color-msg-notif-normal: #9c4aad,
+        color-msg-notif-light: #ebdbef,
+        color-msg-grey-normal: #617079,
+        color-msg-grey-light: #dfe2e4,
+        color-msg-primary-normal: #0057ff,
+        color-msg-primary-light: #e5eeff,
+        color-border-normal: #e1e1e1,
+        color-btn-primary-normal: #ffb906,
+        color-btn-primary-hover: #ffc737,
+        color-btn-primary-pressed: #ebaa05,
+        color-btn-secondary-normal: #ffb906,
+        color-btn-secondary-hover: #ffc737,
+        color-btn-secondary-pressed: #ebaa05,
+        color-snackbar-background: #323232,
+        color-btn: (
+            primary: (
+                normal: #ffb906,
+                hover: #ffc737,
+                pressed: #ebaa05,
+                disabled: #eaeaea,
+            ),
+            secondary: (
+                normal: #ffb906,
+                hover: #ffc737,
+                pressed: #ebaa05,
+                disabled: #eaeaea,
+            ),
+            tertiary: (
+                normal: #e1e1e1,
+                hover: #e7e7e7,
+                pressed: #bfbfbf,
+                disabled: #eaeaea,
+            ),
+            transparent: (
+                normal: #ffffff,
+                hover: #ffffff,
+                pressed: #e7e7e7,
+                disabled: #eaeaea,
+            ),
+        ),
+    ),
+);
+
+// $msg-colors: (success, danger, warning1, warning2, notif, grey, primary);
+
+$circle-button-colors: (
+    primary: (
+        color-primary-normal,
+        color-primary-light,
+    ),
+    secondary: (
+        color-secondary-normal,
+        color-secondary-light,
+    ),
+    gris: (
+        color-grey-dark,
+        color-grey-medium,
+    ),
+    notf-info: (
+        color-msg-notif-normal,
+        color-msg-notif-light,
+    ),
+    notf-success: (
+        color-msg-success-normal,
+        color-msg-success-light,
+    ),
+    notf-warning1: (
+        color-msg-warning1-normal,
+        color-msg-warning1-light,
+    ),
+    notf-warning2: (
+        color-msg-warning2-normal,
+        color-msg-warning2-light,
+    ),
+    notf-danger: (
+        color-msg-danger-normal,
+        color-msg-danger-light,
+    ),
+);
+
+// Couleurs de texte
+.aa-color-black {
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                color: getSkinColor($skin, color-black);
+            }
+        }
+    }
+}
+.aa-color-primary-normal {
+    @each $skin, $name in $skins {
+        .#{$name} & {
+            color: getSkinColor($skin, color-primary-normal);
+        }
+    }
+}
+@mixin aa-color-primary-normal {
+    @each $skin, $name in $skins {
+        .#{$name} & {
+            color: getSkinColor($skin, color-primary-normal);
+        }
+    }
+}
+
+.aa-background-color-primary-light {
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                background-color: getSkinColor($skin, color-primary-light);
+            }
+        }
+    }
+}
+@mixin aa-background-color-primary-light {
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                background-color: getSkinColor($skin, color-primary-light);
+            }
+        }
+    }
+}
+
+.aa-color-grey-light {
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                color: getSkinColor($skin, color-grey-light);
+            }
+        }
+    }
+}
+.aa-color-grey-dark {
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                color: getSkinColor($skin, color-grey-dark);
+            }
+        }
+    }
+}
+
+@mixin aa-color-grey-snow {
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                color: getSkinColor($skin, color-grey-snow);
+            }
+        }
+    }
+}
+
+.aa-color-msg-danger-normal {
+    @each $skin, $name in $skins {
+        @if map-has-key($config, $skin) {
+            .#{$name} & {
+                color: getSkinColor($skin, color-msg-danger-normal);
+            }
+        }
+    }
+}
+// Fin des couleurs de texte

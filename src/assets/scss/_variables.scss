@@ -1,0 +1,97 @@
+//-----------------------------------------------------------------------
+// <copyright file="_variables.scss" company="Antemeta">
+//     Copyright (c) Antemeta. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+/******** z-index **********/
+$left-navbar-zindex: 50;
+$loading-zindex: 250;
+$masking-zindex: 275;
+$popin-zindex: 500;
+$modal-zindex: 1000;
+$modal-overlay-zindex: 999;
+
+/******* Breakpoints *******/
+$phone-upper-boundary: 600px;
+$tablet-portrait-upper-boundary: 768px;
+$tablet-landscape-upper-boundary: 1024px;
+$desktop-upper-boundary: 1800px;
+/***************************/
+
+// Barre de navigation
+$header-height: 70px;
+$left-navbar-width: 94px;
+$right-margin-width: 70px;
+$footer-height: 40px;
+
+$user-menu-width: calc(var(--user-menu-width) * 1vw);
+
+$logo-width: 64px;
+$logo-height: 64px;
+
+$content-bandeau-header: 40px;
+$content-header-padding-height: 34px;
+$content-header-height: calc(#{$content-bandeau-header} + 2 * #{$content-header-padding-height});
+$content-actions-height: 50px;
+$content-panel-padding-left: 50px;
+$content-footer-height: 70px;
+$popin-footer-height: 200px;
+
+// Without tabset and with: height
+$no-tabs-header-height: 0px;
+$tabs-header-height: 45px; //calc(45px + #{$no-tabs-header-height});
+
+$row-detail-min-height: 50px;
+
+// Design des boutons de menu et des lignes (au moins Request)
+$border-left-radius: 3px;
+$border-left-width: 4px;
+$border-tabset-bottom-width: 2px;
+
+/******* Popin général *******/
+$popin-padding-tb: 2vh; //top-bottom
+$popin-padding-rl: 2vw; // right-left
+$popin-title-height: 70px;
+$popin-content-height: calc(
+    100vh - 2 * #{$popin-padding-tb} - #{$popin-title-height}
+);
+/**************************/
+
+/******* Popin ITSM *******/
+$ticket-summary-height: 50px;
+$ticket-footer-height: 100px;
+$ticket-details-content-height: calc(
+    #{$popin-content-height} - #{$ticket-summary-height} - #{$tabs-header-height} -
+        #{$ticket-footer-height}
+);
+/**************************/
+
+/******* Popin ADMIN/USERS-ENTITIES*******/
+$details-margin-height: 40px;
+$details-footer-height: 100px;
+$details-details-content-height: calc(
+    #{$popin-content-height} - #{$details-margin-height} - #{$tabs-header-height} -
+        #{$details-footer-height}
+);
+/**************************/
+
+/******* Popin PRIV *******/
+$profile-card-width: 250px;
+$profile-card-height: 250px;
+$identicon-width: 48;   // Ne pas mettre d'unité car utilisé dans des calculs mathématiques
+/**************************/
+
+/******* Menu popup *******/
+$item-height: calc(var(--popup-item-height) * 1px);
+$item-half-height: calc(#{$item-height}  / 2);
+/**************************/
+
+
+$panels: (
+    priv: (
+        entity: (
+            top: 0.55,
+            bottom: 0.45
+        )
+    )
+);

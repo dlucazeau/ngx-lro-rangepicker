@@ -1,0 +1,115 @@
+@import "imports";
+
+$fieldset-padding: 28px;
+
+fieldset {
+    border-radius: 7px;
+    border: 1px solid getSkinColorByKey(color-grey-light);
+    padding: 0px $fieldset-padding $fieldset-padding $fieldset-padding;
+    margin-top: 16px;
+}
+legend {
+    padding: 0px 5px 0px 5px;
+    color: getSkinColorByKey(color-grey-light);
+}
+
+input {
+    margin: 0 5px;
+    border: none;
+    box-shadow: none;
+    @include aa-light-current-text;
+    &:focus {
+        outline: none;
+    }
+}
+
+.required label:after {
+    content: "*";
+}
+
+/* Checkboxes et Radiobuttons */
+// * @see https://www.concretepage.com/angular-2/angular-2-radio-button-and-checkbox-example#reactive-validation
+// * @see https://theblog.adobe.com/css-vs-svg-styling-checkboxes-and-radio-buttons/
+$space: 10px;
+
+.radio-group {
+    input[type="radio"],
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    label {
+        cursor: pointer;
+        @include aa-medium-current-text;
+        color: $color-grey-light;
+        & > span {
+            display: inline-block;
+            position: relative;
+            padding-left: 25px;
+            &:before {
+                font-family: $fontAwesomeFamily;
+                font-weight: 300;
+                content: "";
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                margin-right: $space;
+                @each $skin, $name in $skins {
+                    .#{$name} & {
+                        background-color: getSkinColor($skin, color-white);
+                    }
+                }
+            }
+        }
+    }
+    label > span:hover:before {
+        font-weight: 500;
+        @each $skin, $name in $skins {
+            .#{$name} & {
+                color: getSkinColor($skin, color-msg-primary-normal);
+            }
+        }
+    }
+    input[type="radio"] + span:before {
+        content: "\f111"; // fa-circle
+    }
+    input[type="radio"]:checked + span:before {
+        content: "\f192"; // fa-dot-circle
+        font-weight: 500;
+        @each $skin, $name in $skins {
+            .#{$name} & {
+                color: getSkinColor($skin, color-msg-primary-normal);
+            }
+        }
+    }
+    input[type="radio"]:checked + span,
+    input[type="checkbox"]:checked + span {
+        @each $skin, $name in $skins {
+            .#{$name} & {
+                color: getSkinColor($skin, color-black);
+            }
+        }
+    }
+    input[type="checkbox"] + span:before {
+        content: "\f0c8"; // fa-square
+    }
+    input[type="checkbox"]:checked + span:before {
+        content: "\f14a"; // fa-check-square
+        font-weight: 500;
+        @each $skin, $name in $skins {
+            .#{$name} & {
+                color: getSkinColor($skin, color-msg-primary-normal);
+            }
+        }
+    }
+}
+
+.aa-ng-select.ng-select {
+    .ng-select-container {
+        @each $skin, $name in $skins {
+            .#{$name} & {
+                border-color: getSkinColor($skin, color-grey-light);
+            }
+        }
+    }
+}
