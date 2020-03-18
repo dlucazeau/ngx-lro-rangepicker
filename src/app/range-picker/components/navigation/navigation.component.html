@@ -12,8 +12,8 @@
          [attr.height]="cfg.cellHeight" (click)="onNextMonth()">
     <svg:path d="M6,6 V18 L18,12 Z" />
 </svg:svg>
-<svg:svg [attr.x]="cfg.navigationSize.width - cfg.cellWidth" y="0" [attr.width]="cfg.cellWidth" [attr.height]="cfg.cellHeight"
-         (click)="onNextYear()">
+<svg:svg [attr.x]="cfg.navigationSize.width - cfg.cellWidth" y="0" [attr.width]="cfg.cellWidth"
+         [attr.height]="cfg.cellHeight" (click)="onNextYear()">
     <svg:path d="M6,6 V18 L18,12 Z" transform="translate(-3)" />
     <svg:path d="M6,6 V18 L18,12 Z" transform="translate(3)" />
 </svg:svg>

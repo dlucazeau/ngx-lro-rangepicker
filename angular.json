@@ -46,9 +46,13 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": ["src/assets/styles.scss"],
+            "styles": [
+              "src/assets/styles.scss"
+            ],
             "stylePreprocessorOptions": {
-                "includePaths": ["src/assets/scss"]
+              "includePaths": [
+                "src/assets/scss"
+              ]
             },
             "scripts": []
           },
@@ -127,6 +131,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngx-lro-datepicker"
+    }
+  },
+  "defaultProject": "ngx-lro-datepicker",
+  "cli": {
+    "analytics": "afbf5b72-dd0f-4a35-9538-1f29a9cb8e9c"
+  }
 }
