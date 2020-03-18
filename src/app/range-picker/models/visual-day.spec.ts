@@ -145,7 +145,7 @@ describe('VisualDay', () =>
         const vd = new VisualDay(d, inputDate, DateTime.utc(1970, 1, 1), DateTime.utc(1970, 1, 1), DateTime.utc(1970, 1, 1), DateTime.utc(1970, 1, 1));
 
         // Assert
-        expect(vd.isInputDate).toBe(true);
+        expect(vd.isToday).toBe(true);
     });
 
     it('ctor / calendar / isInputDate should be false', async () =>
@@ -158,6 +158,6 @@ describe('VisualDay', () =>
         const vd = new VisualDay(d, inputDate, DateTime.utc(1970, 1, 1), DateTime.utc(1970, 1, 1), DateTime.utc(1970, 1, 1), DateTime.utc(1970, 1, 1));
 
         // Assert
-        expect(vd.isInputDate).toBe(false);
+        expect(vd.isToday).toBe(false);
     });
 });

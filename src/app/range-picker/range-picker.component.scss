@@ -4,27 +4,15 @@
 
 .container {
     width: 100%;
-    // flex: 1 1 100%;
     height: 24px;
     max-height: 24px;
-    rect {
-        fill: transparent;
-        stroke: var(--color-grey-dark, "#617079");
-        // stroke-width: 0.5px;
-    }
-}
 
-rect {
-    fill: transparent;
-    stroke: var(--color-grey-dark, "#617079");
-        // stroke-width: 0.5px;
-}
-
-circle {
-    &.dotted {
-        fill: var(--color-grey-medium, "#ededed");
-    }
-    &.red-dotted {
-        fill: var(--color-msg-danger-light, "#ffd2d2");
+    circle {
+        &.dotted {
+            fill: var(--color-grey-medium, "#ededed");
+        }
+        &.red-dotted {
+            fill: var(--color-msg-danger-light, "#ffd2d2");
+        }
     }
 }

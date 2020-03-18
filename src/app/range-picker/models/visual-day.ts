@@ -17,7 +17,7 @@ export class VisualDay
     /**
      * Is this day today?
      */
-    isInputDate: boolean;
+    isToday: boolean;
 
     /**
      * Is this day in the current month?
@@ -40,6 +40,11 @@ export class VisualDay
     isInRange: boolean = false;
 
     /**
+     * Est-ce que la date est une des dates bornes, cliquée : since ou until
+     */
+    isBoundary: boolean = false;
+
+    /**
      *
      */
     constructor(d: DateTime, firstDay: DateTime, minDate: DateTime, maxDate: DateTime, sinceDate?: DateTime, untilDate?: DateTime)
@@ -49,11 +54,13 @@ export class VisualDay
         this.day = this.isInCurrentMonth ? d.day : '';
         this.isWeekend = Utils.isWeekend(this.date);
         this.isCheckable = Utils.isBetween(this.date, minDate, maxDate);
-        this.isInputDate = Utils.isToday(this.date);
+        this.isToday = Utils.isToday(this.date);
+        this.isBoundary = (Utils.isEqual(this.date, sinceDate) || Utils.isEqual(this.date, untilDate)) && this.isInCurrentMonth;
+
         if (sinceDate !== null && untilDate !== null)
         {
-            this.isInRange = Utils.isStrictlyBetween(this.date, sinceDate, untilDate);
-            this.isInputDate = this.isInputDate || Utils.isEqual(d, sinceDate) || Utils.isEqual(d, untilDate);
+            this.isInRange = Utils.isStrictlyBetween(this.date, sinceDate, untilDate) && this.isInCurrentMonth;
+            // this.isToday = this.isToday || Utils.isEqual(d, sinceDate) || Utils.isEqual(d, untilDate);
         }
     }
 }

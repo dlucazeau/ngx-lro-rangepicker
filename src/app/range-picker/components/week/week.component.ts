@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeekComponent implements OnInit
 {
-    // @Input() config: RangeConfig;
     public weekDays: string[] = [];
 
     constructor()

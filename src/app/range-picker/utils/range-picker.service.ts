@@ -29,12 +29,12 @@ export class RangePickerService
     }
     set inputSince (value: DateTime)
     {
-        this.configStore.inputSince = value;
+        this.configStore.since = value;
         this.pushConfig();
     }
     set inputUntil (value: DateTime)
     {
-        this.configStore.inputUntil = value;
+        this.configStore.until = value;
         this.pushConfig();
     }
     set leftFirstDay (value: DateTime)
@@ -45,7 +45,7 @@ export class RangePickerService
     }
     set rightFirstDay (value: DateTime)
     {
-        this.configStore.inputUntil = value;
+        this.configStore.until = value;
         this.pushConfig();
     }
 
@@ -64,7 +64,7 @@ export class RangePickerService
     }
     get dateRange ()
     {
-        return new DateRange(this.configStore.inputSince, this.configStore.inputUntil);
+        return new DateRange(this.configStore.since, this.configStore.until);
     }
 
     public initConfig (value: {})
@@ -90,9 +90,9 @@ export class RangePickerService
             this.firstDayClicked = true;
         } else if (!this.secondDayClicked)
         {
-            if (Utils.isBefore(date, this.configStore.inputSince))
+            if (Utils.isBefore(date, this.configStore.since))
             {
-                const temp: DateTime = this.configStore.inputSince;
+                const temp: DateTime = this.configStore.since;
 
                 this.inputSince = date;
                 this.inputUntil = temp;

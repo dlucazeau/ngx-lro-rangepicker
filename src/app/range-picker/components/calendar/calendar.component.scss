@@ -6,9 +6,6 @@ $uncheckableColor: #ffd2d2; // var(--color-msg-danger-light, #ffd2d2);
     fill: var(--color-grey-light, "#dfe2e4");
     .day {
         cursor: pointer;
-        rect {
-            fill: transparent;
-        }
     }
     .curr-month {
         fill: var(--color-black, "#1d2b37");
@@ -26,17 +23,22 @@ $uncheckableColor: #ffd2d2; // var(--color-msg-danger-light, #ffd2d2);
             fill: var(--color-msg-success-normal, "#51D46E");
         }
     }
-    .uncheckable {
+    .uncheckable, .unclickable {
         cursor: not-allowed;
         pointer-events: none;
-        rect {
-            fill: lighten(#ffd2d2, 7%);
+        // rect {
+        //     fill: lighten(#ffd2d2, 7%);
+        // }
+    }
+    .boundary {
+        circle {
+            fill: var(--color-msg-success-normal, "#51d46e");
+        }
+        text {
+            fill: var(--color-msg-success-light, "#d1f4d9");
         }
     }
 }
-
-rect {
-    fill: transparent;
+rect.border {
     stroke: var(--color-grey-dark, "#617079");
-    stroke-width: 0.5px;
 }

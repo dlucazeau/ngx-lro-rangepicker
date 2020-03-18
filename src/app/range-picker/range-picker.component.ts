@@ -32,10 +32,10 @@ export class RangePickerComponent implements OnInit
         this.rangePickerService.initConfig(this.config);
     }
 
-    onShowCalendar (status: boolean)
+    onShowCalendar (showPanel: boolean)
     {
-        this.showPanel = status;
-        this.calendarShowHide(status);
+        this.showPanel = showPanel;
+        this.calendarShowHide(showPanel);
     }
 
     onSubmit (dr: DateRange)

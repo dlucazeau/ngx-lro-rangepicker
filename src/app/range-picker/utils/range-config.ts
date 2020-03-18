@@ -6,8 +6,8 @@ export class RangeConfig
 {
     minDate?: DateTime = null;
     maxDate?: DateTime = null;
-    inputSince?: DateTime = null;
-    inputUntil?: DateTime = null;
+    since?: DateTime = null;
+    until?: DateTime = null;
     leftFirstDay: DateTime;
     rightFirstDay: DateTime;
     format: string = 'MM/dd/yyyy';
@@ -33,12 +33,12 @@ export class RangeConfig
             cfg.maxDate = Utils.getMaxDate();
         }
 
-        if (cfg.inputSince === null)
+        if (cfg.since === null)
         {
             cfg.leftFirstDay = Utils.getToday().startOf('month');
         } else
         {
-            cfg.leftFirstDay = cfg.inputSince.startOf('month');
+            cfg.leftFirstDay = cfg.since.startOf('month');
         }
 
         cfg.rightFirstDay = cfg.leftFirstDay.plus({ month: 1 });

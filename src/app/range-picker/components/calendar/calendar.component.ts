@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angu
 
 import { DateTime } from 'luxon';
 
-import { RangeConfig, Constants, RangePickerService } from '../../utils';
+import { RangeConfig, Constants, RangePickerService, CalendarConfig } from '../../utils';
 import { VisualDay } from '../../models';
 import { tap } from 'rxjs/operators';
 
@@ -10,6 +10,7 @@ import { tap } from 'rxjs/operators';
     selector: '[aaCalendar]',
     templateUrl: './calendar.component.html',
     styleUrls: [
+        '../shared.scss',
         './calendar.component.scss'
     ]
 })
@@ -22,6 +23,7 @@ export class CalendarComponent implements OnInit, OnDestroy
     public days: VisualDay[][] = [];
     public width: number = Constants.welt * 7;
     public height: number = Constants.welt;
+    public cfg: CalendarConfig = new CalendarConfig();
 
     constructor(private rangePickerService: RangePickerService)
     {
@@ -69,8 +71,8 @@ export class CalendarComponent implements OnInit, OnDestroy
                     firstDay,
                     rc.minDate,
                     rc.maxDate,
-                    rc.inputSince,
-                    rc.inputUntil
+                    rc.since,
+                    rc.until
                 );
                 currentDay = currentDay.plus({ day: 1 });
             }

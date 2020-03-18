@@ -8,15 +8,15 @@ import { RangePickerService, RangeConfig, CalendarConfig } from '../../utils';
     selector: '[aaRangeItem]',
     templateUrl: './range-item.component.html',
     styleUrls: [
+        '../shared.scss',
         './range-item.component.scss'
     ]
 })
 export class RangeItemComponent implements OnInit
 {
-    @Input() isArrowDown: boolean;
+    @Input() showPanel: boolean;
     @Output() fromRangeItemShowCalendar: EventEmitter<boolean> = new EventEmitter<boolean>();
     public displayRange: string;
-    public open: boolean = false;
     public cfg: CalendarConfig = new CalendarConfig();
 
     constructor(private rangePickerService: RangePickerService)
@@ -25,7 +25,6 @@ export class RangeItemComponent implements OnInit
 
     ngOnInit ()
     {
-        this.open = this.isArrowDown;
         this.rangePickerService.config
             .pipe(
                 tap((rc: RangeConfig) =>
@@ -37,23 +36,23 @@ export class RangeItemComponent implements OnInit
 
     onClickArrow ()
     {
-        this.open = !this.open;
-        this.fromRangeItemShowCalendar.emit(this.open);
+        this.showPanel = !this.showPanel;
+        this.fromRangeItemShowCalendar.emit(this.showPanel);
     }
 
     private setRange (rc: RangeConfig)
     {
-        if (rc.inputSince !== null && rc.inputUntil !== null)
+        if (rc.since !== null && rc.until !== null)
         {
-            const displayedSince: string = rc.inputSince.toFormat(this.rangePickerService.format);
-            const displayedUntil: string = rc.inputUntil.toFormat(this.rangePickerService.format);
+            const displayedSince: string = rc.since.toFormat(this.rangePickerService.format);
+            const displayedUntil: string = rc.until.toFormat(this.rangePickerService.format);
 
             this.displayRange = `from ${displayedSince} to ${displayedUntil}`;
         }
 
-        if (rc.inputSince !== null && rc.inputUntil === null)
+        if (rc.since !== null && rc.until === null)
         {
-            const displayedSince: string = rc.inputSince.toFormat(this.rangePickerService.format);
+            const displayedSince: string = rc.since.toFormat(this.rangePickerService.format);
 
             this.displayRange = `from/to ${displayedSince}`;
         }

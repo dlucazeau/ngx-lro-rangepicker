@@ -8,6 +8,7 @@ import { RangeConfig, CalendarConfig, RangePickerService } from '../../utils';
     selector: '[aaNavigation]',
     templateUrl: './navigation.component.html',
     styleUrls: [
+        '../shared.scss',
         './navigation.component.scss'
     ]
 })

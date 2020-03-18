@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-lro-datepicker": {
+    "ngx-lro-rangepicker": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -36,7 +36,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-lro-datepicker",
+            "outputPath": "dist/ngx-lro-rangepicker",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -91,18 +91,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-lro-datepicker:build"
+            "browserTarget": "ngx-lro-rangepicker:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-lro-datepicker:build:production"
+              "browserTarget": "ngx-lro-rangepicker:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-lro-datepicker:build"
+            "browserTarget": "ngx-lro-rangepicker:build"
           }
         },
         "lint": {
@@ -122,18 +122,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-lro-datepicker:serve"
+            "devServerTarget": "ngx-lro-rangepicker:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-lro-datepicker:serve:production"
+              "devServerTarget": "ngx-lro-rangepicker:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "ngx-lro-datepicker",
+  "defaultProject": "ngx-lro-rangepicker",
   "cli": {
     "analytics": "afbf5b72-dd0f-4a35-9538-1f29a9cb8e9c"
   }

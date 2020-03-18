@@ -1,22 +1,26 @@
-<svg:svg class="calendar" *ngFor="let row of rows" [attr.x]="0" [attr.y]="24 * row" [attr.width]="width"
-         [attr.height]="24">
-    <svg:svg class="day" *ngFor="let col of cols" [attr.x]="24 * col" y="0" width="24" height="24"
-             (click)="onSelectDate(days[row][col])" [ngClass]="{
+<svg:svg class="calendar" *ngFor="let row of rows" [attr.x]="0" [attr.y]="cfg.cellHeight * row"
+         [attr.width]="cfg.calendarSize.width" [attr.height]="cfg.cellHeight">
+    <svg:svg class="day" *ngFor="let col of cols" [attr.x]="cfg.cellWidth * col" y="0" [attr.width]="cfg.cellWidth"
+             [attr.height]="cfg.cellHeight" (click)="onSelectDate(days[row][col])" [ngClass]="{
                     currentMonth: days[row][col].isInCurrentMonth,
+                    unclickable: ! days[row][col].isInCurrentMonth,
                     uncheckable: !days[row][col].isCheckable,
-                    isInRange: days[row][col].isInRange && days[row][col].isInCurrentMonth,
-                    today: days[row][col].isInputDate
+                    isInRange: days[row][col].isInRange,
+                    today: days[row][col].isToday,
+                    boundary: days[row][col].isBoundary
                 }">
-        <svg:rect [style.stroke-width]="'1px'" y="0" x="0" width="24" height="24" [ngStyle]="{
+        <svg:rect y="0" x="0" [attr.width]="cfg.cellWidth" [attr.height]="cfg.cellHeight" [ngStyle]="{
                         fill: days[row][col].isWeekend
                             ? (days[row][col].isCheckable ? 'url(#dotted-pattern)' : 'url(#red-dotted-pattern)')
                             : ''
                     }">
         </svg:rect>
-        <svg:circle r="10" cx="12" cy="12" *ngIf="days[row][col].isInputDate">
+        <svg:circle r="10" cx="12" cy="12" *ngIf="days[row][col].isToday || days[row][col].isBoundary">
         </svg:circle>
         <svg:text x="50%" y="50%" dominant-baseline="central" text-anchor="middle">
             {{ days[row][col].day }}
         </svg:text>
     </svg:svg>
 </svg:svg>
+<svg:rect class="border" x="0" y="0" [attr.width]="cfg.calendarSize.width" [attr.height]="cfg.calendarSize.height">
+</svg:rect>
