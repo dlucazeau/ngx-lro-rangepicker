@@ -49,14 +49,12 @@ export class RangeItemComponent implements OnInit
                 const displayedSince: string = rc.since.toFormat(this.rangePickerService.format);
                 const displayedUntil: string = rc.until.toFormat(this.rangePickerService.format);
 
-                // this.displayRange = `from ${displayedSince} to ${displayedUntil}`;
-
-                this.displayRange = rc.rangeItemTpl.stringFormat(displayedSince, displayedUntil);
+                this.displayRange = `${rc.rangeItemFromTpl} ${displayedSince} ${rc.rangeItemToTpl} ${displayedUntil}`;
             } else
             {
                 const displayedSince: string = rc.since.toFormat(this.rangePickerService.format);
 
-                this.displayRange = `from/to ${displayedSince}`;
+                this.displayRange = `${rc.rangeItemFromTpl}/${rc.rangeItemToTpl} ${displayedSince}`;
             }
         } else
         {

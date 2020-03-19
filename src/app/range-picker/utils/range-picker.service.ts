@@ -174,6 +174,7 @@ export class RangePickerService
     private setFormat (): void
     {
         this.configStore.format = this.language === 'en-US' ? 'MM/dd/yyyy' : 'dd/MM/yyyy';
-        this.configStore.rangeItemTpl = this.language === 'en-US' ? 'from {0} to {1}' : 'du {0} au {1}';
+        this.configStore.rangeItemFromTpl = this.language === 'en-US' ? 'from' : 'du';
+        this.configStore.rangeItemToTpl = this.language === 'en-US' ? 'to' : 'au';
     }
 }

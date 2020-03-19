@@ -1,5 +1,6 @@
 <div class="container" #container>
-    <svg:svg [attr.width]="cfg.pickerSize.width" [attr.height]="height">
+    <svg:svg class="background" [attr.width]="cfg.pickerSize.width" [attr.height]="height">
+        <svg:rect class="background" y="0" x="0" [attr.width]="cfg.pickerSize.width" [attr.height]="height"></svg:rect>
         <svg:svg [attr.x]="cfg.rangeItemPos.x" [attr.y]="cfg.rangeItemPos.y" [attr.width]="cfg.rangeItemSize.width"
                  [attr.height]="cfg.rangeItemSize.height">
             <defs>
@@ -23,14 +24,17 @@
             <svg:svg aaNavigation [attr.x]="cfg.navigationPos.x" [attr.y]="cfg.navigationPos.y"
                      [attr.width]="cfg.navigationSize.width" [attr.height]="cfg.navigationSize.height">
             </svg:svg>
-            <svg:svg aaCalendar *ngIf="!sp.showOptions" [left]="true" [attr.x]="cfg.leftCalendarPos.x" [attr.y]="cfg.leftCalendarPos.y"
-                     [attr.width]="cfg.calendarSize.width" [attr.height]="cfg.calendarSize.height">
+            <svg:svg aaCalendar *ngIf="!sp.showOptions" [left]="true" [attr.x]="cfg.leftCalendarPos.x"
+                     [attr.y]="cfg.leftCalendarPos.y" [attr.width]="cfg.calendarSize.width"
+                     [attr.height]="cfg.calendarSize.height">
             </svg:svg>
-            <svg:svg aaCalendar *ngIf="!sp.showOptions" [left]="false" [attr.x]="cfg.rightCalendarPos.x" [attr.y]="cfg.rightCalendarPos.y"
-                     [attr.width]="cfg.calendarSize.width" [attr.height]="cfg.calendarSize.height">
+            <svg:svg aaCalendar *ngIf="!sp.showOptions" [left]="false" [attr.x]="cfg.rightCalendarPos.x"
+                     [attr.y]="cfg.rightCalendarPos.y" [attr.width]="cfg.calendarSize.width"
+                     [attr.height]="cfg.calendarSize.height">
             </svg:svg>
             <svg:svg aaTools [attr.x]="cfg.toolsPos.x" [attr.y]="cfg.toolsPos.y" [attr.width]="cfg.toolsSize.width"
-                     [attr.height]="cfg.toolsSize.height" (fromToolsSubmit)="onSubmit($event)" (fromToolsReset)="onReset()">
+                     [attr.height]="cfg.toolsSize.height" (fromToolsSubmit)="onSubmit($event)"
+                     (fromToolsReset)="onReset()">
             </svg:svg>
         </svg:svg>
     </svg:svg>

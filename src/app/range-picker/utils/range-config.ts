@@ -12,7 +12,8 @@ export class RangeConfig
     public leftFirstDay: DateTime;
     public rightFirstDay: DateTime;
     public format: string = 'MM/dd/yyyy';
-    public rangeItemTpl: string;
+    public rangeItemFromTpl: string;
+    public rangeItemToTpl: string;
 
     constructor() { }
 
@@ -46,21 +47,10 @@ export class RangeConfig
         cfg.rightFirstDay = cfg.leftFirstDay.plus({ month: 1 });
 
         cfg.format = cfg.language === 'en-US' ? 'MM/dd/yyyy' : 'dd/MM/yyyy';
-        cfg.rangeItemTpl = cfg.language === 'en-US' ? 'from {0} to {1}' : 'du {0} au {1}';
-        // if (isAfter(cfg.minDateTime, cfg.maxDateTime))
-        // {
-        //     cfg.minDateTime = Utils.cloneDateTime(cfg.maxDateTime);
-        // }
-
-        // if (cfg.sinceDateTime === null)
-        // {
-        //     cfg.sinceDateTime = cfg.minDateTime;
-        // }
-
-        // if (cfg.untilDateTime === null)
-        // {
-        //     cfg.untilDateTime = cfg.maxDateTime;
-        // }
+        // cfg.rangeItemLongTpl = cfg.language === 'en-US' ? 'from {0} to {1}' : 'du {0} au {1}';
+        // cfg.rangeItemShortTpl = cfg.language === 'en-US' ? 'from/to {0}' : 'du/au {0}';
+        cfg.rangeItemFromTpl = cfg.language === 'en-US' ? 'from' : 'du';
+        cfg.rangeItemToTpl = cfg.language === 'en-US' ? 'to' : 'au';
 
         return cfg;
     }

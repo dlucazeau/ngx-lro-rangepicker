@@ -15,4 +15,12 @@
             fill: var(--color-msg-danger-light, "#ffd2d2");
         }
     }
+    svg.background {
+        position: relative;
+        z-index: 100;
+        // fill: white;
+    }
+    rect.background {
+        fill: white;
+    }
 }

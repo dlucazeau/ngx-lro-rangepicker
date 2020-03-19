@@ -1,5 +1,3 @@
-<!-- <svg:rect class="border" x="0" y="0" [attr.width]="cfg.calendarSize.width" [attr.height]="cfg.calendarSize.height">
-</svg:rect> -->
 <svg:svg class="calendar" *ngFor="let row of rows" [attr.x]="0" [attr.y]="cfg.cellHeight * row"
          [attr.width]="cfg.calendarSize.width" [attr.height]="cfg.cellHeight">
     <svg:svg class="day" *ngFor="let col of cols" [attr.x]="cfg.cellWidth * col" y="0" [attr.width]="cfg.cellWidth"
