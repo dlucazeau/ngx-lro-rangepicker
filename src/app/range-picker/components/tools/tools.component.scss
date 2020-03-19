@@ -16,15 +16,15 @@
     circle {
         fill: var(--color-primary-light, "#e2eeff");
     }
-    &.disabled {
-        cursor: not-allowed;
-        path {
-            fill: var(--color-grey-dark, "#617079");
-        }
-        circle {
-            fill: var(--color-grey-medium, "#ededed");
-        }
-    }
+    // &.disabled {
+    //     cursor: not-allowed;
+    //     path {
+    //         fill: var(--color-grey-dark, "#617079");
+    //     }
+    //     circle {
+    //         fill: var(--color-grey-medium, "#ededed");
+    //     }
+    // }
 }
 
 rect {

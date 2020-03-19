@@ -14,6 +14,7 @@ import { DateRange } from './range-picker/utils';
 export class AppComponent
 {
     public configRangePicker = {
+        language: 'fr-FR',
         minDate: DateTime.utc(2016, 1, 1),
         maxDate: DateTime.utc(2020, 12, 31),
         format: 'dd/MM/yyyy',

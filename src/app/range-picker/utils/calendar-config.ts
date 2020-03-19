@@ -39,20 +39,6 @@ export class CalendarConfig
         y: 0
     };
 
-    // public calendarPanel: Pos = {
-    //     x: 0
-    // };
-
-    // public infosCalendarSize: Size = {
-    //     width: this.calendarSize.width,
-    //     height: this.calendarSize.height
-    // };
-
-    // public leftInfosCalendarPos: Pos = {
-    //     x: this.calendarSize.width,
-    //     height: this.calendarSize.height
-    // };
-
     public leftCalendarPos: Pos = {
         x: 0,
         y: this.navigationPos.y + this.navigationSize.height + CalendarConfig.spacing
@@ -84,5 +70,4 @@ export class CalendarConfig
         width: this.panelSize.width + CalendarConfig.spacing,
         height: this.rangeItemSize.height + this.panelSize.height + CalendarConfig.spacing
     };
-    // public
 }

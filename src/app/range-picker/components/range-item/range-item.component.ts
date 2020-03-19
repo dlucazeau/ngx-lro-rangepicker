@@ -42,19 +42,25 @@ export class RangeItemComponent implements OnInit
 
     private setRange (rc: RangeConfig)
     {
-        if (rc.since !== null && rc.until !== null)
+        if (rc.since !== null)
         {
-            const displayedSince: string = rc.since.toFormat(this.rangePickerService.format);
-            const displayedUntil: string = rc.until.toFormat(this.rangePickerService.format);
+            if (rc.until !== null)
+            {
+                const displayedSince: string = rc.since.toFormat(this.rangePickerService.format);
+                const displayedUntil: string = rc.until.toFormat(this.rangePickerService.format);
 
-            this.displayRange = `from ${displayedSince} to ${displayedUntil}`;
-        }
+                // this.displayRange = `from ${displayedSince} to ${displayedUntil}`;
 
-        if (rc.since !== null && rc.until === null)
+                this.displayRange = rc.rangeItemTpl.stringFormat(displayedSince, displayedUntil);
+            } else
+            {
+                const displayedSince: string = rc.since.toFormat(this.rangePickerService.format);
+
+                this.displayRange = `from/to ${displayedSince}`;
+            }
+        } else
         {
-            const displayedSince: string = rc.since.toFormat(this.rangePickerService.format);
-
-            this.displayRange = `from/to ${displayedSince}`;
+            this.displayRange = '';
         }
     }
 }

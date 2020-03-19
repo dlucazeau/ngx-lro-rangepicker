@@ -1,0 +1,12 @@
+<div class="switch-component">
+    <span class="switch-container">
+        <svg:svg [attr.x]="posX" [attr.y]="posY" width="50" height="25" viewBox="0 0 150 75" (click)="onToggleSwitch()">
+            <svg:g transform="translate(0, 12)">
+                <svg:path [style.fill]="fillPath"
+                          d="M 25 0 h 50 A 25 25 0 1 1 75 50 h -50 M 25 0 A 25 25 0 1 0 25 50 z" />
+                <svg:circle fill="#ffffff" [attr.cx]="cx" cy="25" r="20" />
+            </svg:g>
+        </svg:svg>
+    </span>
+    <label for="fieldId" (click)="onToggleSwitch()">{{ label }}</label>
+</div>

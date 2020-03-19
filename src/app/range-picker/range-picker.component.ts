@@ -2,7 +2,8 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 import { gsap } from 'gsap';
 
-import { RangePickerService, RangeConfig, CalendarConfig, DateRange } from './utils';
+import { RangePickerService, RangeConfig, CalendarConfig, DateRange, StatePicker } from './utils';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'aa-range-picker',
@@ -20,12 +21,20 @@ export class RangePickerComponent implements OnInit
     @Output() fromPickerSubmit: EventEmitter<DateRange> = new EventEmitter<DateRange>();
     public cfg: CalendarConfig = new CalendarConfig();
     public height: number = this.cfg.rangeItemSize.height;
+    public sp: StatePicker;
     public showPanel: boolean = false;
     private duration: number = 0.33;
 
-    constructor(
-        private rangePickerService: RangePickerService
-    ) { }
+
+    constructor(private rangePickerService: RangePickerService)
+    {
+        this.rangePickerService.state
+            .pipe(
+                tap((state: StatePicker) =>
+                    this.sp = state
+                )
+            )
+            .subscribe(); }
 
     ngOnInit ()
     {
@@ -41,7 +50,17 @@ export class RangePickerComponent implements OnInit
     onSubmit (dr: DateRange)
     {
         this.onShowCalendar(false);
+        this.rangePickerService.showOptions = false;
         this.fromPickerSubmit.emit(dr);
+    }
+
+    onReset ()
+    {
+        this.rangePickerService.reset();
+    }
+    onOptions (optionsShown: boolean)
+    {
+        // this.optionsShown = optionsShown;
     }
 
     private calendarShowHide (status: boolean)

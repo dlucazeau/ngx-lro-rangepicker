@@ -26,9 +26,11 @@ $uncheckableColor: #ffd2d2; // var(--color-msg-danger-light, #ffd2d2);
     .uncheckable, .unclickable {
         cursor: not-allowed;
         pointer-events: none;
-        // rect {
-        //     fill: lighten(#ffd2d2, 7%);
-        // }
+    }
+    .uncheckable {
+        rect {
+            fill: lighten(#ffd2d2, 7%);
+        }
     }
     .boundary {
         circle {
@@ -39,6 +41,7 @@ $uncheckableColor: #ffd2d2; // var(--color-msg-danger-light, #ffd2d2);
         }
     }
 }
-rect.border {
+line.border {
+    // fill: transparent;
     stroke: var(--color-grey-dark, "#617079");
 }

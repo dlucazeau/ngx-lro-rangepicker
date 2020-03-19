@@ -1,9 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
-import { DateTime } from 'luxon';
-
-import { CalendarConfig, RangePickerService, DateRange, RangeConfig } from '../../utils';
 import { tap } from 'rxjs/operators';
+
+import { CalendarConfig, RangePickerService, DateRange, StatePicker } from '../../utils';
 
 @Component({
     selector: '[aaTools]',
@@ -13,28 +12,15 @@ import { tap } from 'rxjs/operators';
         './tools.component.scss'
     ]
 })
-export class ToolsComponent implements OnInit
+export class ToolsComponent
 {
-    // @Input() config: CalendarConfig;
     @Output() fromToolsToday: EventEmitter<null> = new EventEmitter<null>();
-    @Output() fromToolsOptions: EventEmitter<DateTime> = new EventEmitter<DateTime>();
     @Output() fromToolsSubmit: EventEmitter<DateRange> = new EventEmitter<DateRange>();
+    @Output() fromToolsReset: EventEmitter<void> = new EventEmitter<void>();
     public cfg: CalendarConfig = new CalendarConfig();
-    public disabled: boolean = false;
 
     constructor(private rangePickerService: RangePickerService)
     {
-    }
-
-    ngOnInit ()
-    {
-        this.rangePickerService.config
-            .pipe(
-                tap((rc: RangeConfig) =>
-                    this.disable(rc)
-                )
-            )
-            .subscribe();
     }
 
     onToday ()
@@ -44,6 +30,7 @@ export class ToolsComponent implements OnInit
 
     onOptions ()
     {
+        this.rangePickerService.toggleOptions();
     }
 
     onSubmit ()
@@ -51,8 +38,8 @@ export class ToolsComponent implements OnInit
         this.fromToolsSubmit.emit(this.rangePickerService.dateRange);
     }
 
-    private disable (rc: RangeConfig)
+    onReset ()
     {
-        this.disabled = rc.since === null;
+        this.fromToolsReset.emit();
     }
 }

@@ -1,0 +1,22 @@
+@import "imports";
+
+.switch-component {
+    display: flex;
+    align-items: center;
+
+    input {
+        display: none;
+    }
+
+    label {
+        @include aa-medium-current-text;
+        padding-right: 7px;
+        cursor: pointer;
+    }
+
+    .switch-container {
+        height: 25px;
+        position: relative;
+        cursor: pointer;
+    }
+}
